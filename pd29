@@ -1,0 +1,36 @@
+// Lista de produtos fornecida
+const produtos = [
+    { nome: "notebook", preco: 6000.00, eletronico: true },
+    { nome: "computador", preco: 4500.00, eletronico: true },
+    { nome: "teclado", preco: 100.00, eletronico: false },
+    { nome: "mouse", preco: 75.00, eletronico: true },
+    { nome: "Cadeira Gamer", preco: 1775.00, eletronico: false }
+];
+
+
+// Usamos a função filter para selecionar os produtos onde eletronico é true
+const apenasEletronicos = produtos.filter(produto => produto.eletronico);
+console.log("1) Produtos eletrônicos:");
+apenasEletronicos.forEach(produto => console.log(- ${produto.nome}: R$ ${produto.preco.toFixed(2)}));
+
+
+// Usamos filter novamente para selecionar produtos com preco maior que 1000
+const produtosAcimaDeMil = produtos.filter(produto => produto.preco > 1000);
+console.log("\n2) Produtos com preço acima de R$ 1000,00:");
+produtosAcimaDeMil.forEach(produto => console.log(- ${produto.nome}: R$ ${produto.preco.toFixed(2)}));
+
+// Usamos map para criar um novo array com a comissão calculada para cada produto
+// 3% de comissão para produtos acima de R$ 1500 e 6% para os demais
+const produtosComComissao = produtos.map(produto => {
+    const taxaComissao = produto.preco > 1500 ? 0.03 : 0.06;
+    const valorComissao = produto.preco * taxaComissao;
+    return {
+        ...produto,
+        comissao: valorComissao
+    };
+});
+
+console.log("\n3) Comissão dos produtos:");
+produtosComComissao.forEach(produto => {
+    console.log(- ${produto.nome}: R$ ${produto.preco.toFixed(2)} - Comissão: R$ ${produto.comissao.toFixed(2)});
+});
