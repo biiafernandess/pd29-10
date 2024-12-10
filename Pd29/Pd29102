@@ -1,0 +1,22 @@
+const produtos = [
+  { nome: "notebook", preco: 6000.00, eletronico: true },
+  { nome: "computador", preco: 4500.00, eletronico: true },
+  { nome: "teclado", preco: 100.00, eletronico: false },
+  { nome: "mouse", preco: 75.00, eletronico: true },
+  { nome: "Cadeira Gamer", preco: 1775.00, eletronico: false }
+];
+
+// 1) Eletrônicos
+const eletronicos = produtos.filter(p => p.eletronico);
+console.log(eletronicos);
+
+// 2) Acima de R$ 1000,00
+const acimaDeMil = produtos.filter(p => p.preco > 1000);
+console.log(acimaDeMil);
+
+// 3) Comissão
+const comissoes = produtos.map(p => ({
+  ...p,
+  comissao: (p.preco * (p.preco > 1500 ? 0.03 : 0.06)).toFixed(2)
+}));
+console.log(comissoes);
